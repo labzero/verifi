@@ -25,6 +25,7 @@ describe Verifi::Client do
                                 "http://localhost:3000"
 
     pr = client.create_payment_request base_params
+
     fetched_pr = client.read_payment_request pr['pay_key']
 
 #    puts "just fetched pr: #{pr.inspect}"
