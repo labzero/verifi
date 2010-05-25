@@ -1,8 +1,9 @@
+require 'spec'
 require File.dirname(__FILE__) + '/../lib/verifi'
 
 describe Verifi::Client do
   it "should be configurable on creation" do
-    client = Verifi::Client.new '123', '123'
+    client = Verifi::Client.new 'your_api_key', 'your_secret_key'
     client.should_not be_nil
   end
 
@@ -31,6 +32,17 @@ describe Verifi::Client do
 #    puts "just fetched pr: #{pr.inspect}"
 
     fetched_pr['pay_key'].should_not be_nil
+  end
+
+  it "should throw exception when missing basic parameters" do
+    client = Verifi::Client.new "e430e360a05704105c5f7a40314dd021", \
+                                "b4d7e651d92af2953faf241f68f763a4", \
+                                "http://localhost:3000"
+
+    params = base_params
+    params.delete(:amount)
+
+    lambda {pr = client.create_payment_request params}.should raise_exception
   end
 
   def base_params
