@@ -1,12 +1,11 @@
 Overview:
-You can use this gem to access Verifi.com's hosted payment page api for creating and reading payment requests.
+You can use this gem to access Verifi.com's hosted payment page API for creating and reading payment requests.
 
 Installation:
 
 sudo gem install verifi
 
 Usage:
-
 
 require 'verifi'
 
